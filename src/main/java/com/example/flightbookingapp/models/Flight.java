@@ -1,20 +1,19 @@
 package com.example.flightbookingapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalTime;
+
 
 @Entity
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String origin;
     private String destination;
-    private Date date;
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;
     private double price;
 
     public Flight() {
@@ -36,19 +35,12 @@ public class Flight {
         this.destination = destination;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,5 +50,21 @@ public class Flight {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public LocalTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 }

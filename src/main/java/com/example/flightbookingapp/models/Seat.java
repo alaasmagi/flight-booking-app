@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private int rowNumber;
     private char seatLetter;
     private boolean isBooked;
@@ -21,11 +21,11 @@ public class Seat {
     public Seat() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -61,7 +61,7 @@ public class Seat {
         isWindow = window;
     }
 
-    public boolean isHasExtraLegroom() {
+    public Boolean isHasExtraLegroom() {
         return hasExtraLegroom;
     }
 
@@ -84,4 +84,5 @@ public class Seat {
     public void setFlight(Flight flight) {
         this.flight = flight;
     }
+
 }
