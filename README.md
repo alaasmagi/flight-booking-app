@@ -96,9 +96,18 @@ I went for a simple approach by keeping data offline using SQLite. I tried to ma
 Even though it's my first time writing Java and Spring Boot web app, I took the challenge and found that there is some similarities between Spring Boot and my current tech stack involving mostly the world of .NET. Java has JPAs, which were useful, so I used them and it made communication with DB a lot easier (almost as easy as with .NET Entity Framework). The overall design approach (controllers, DB entities, services) is the same I use always for my web applications. It keeps things untangled and relatively easy.
 
 ### Frontend
-I have been searching for opportunity to use a new frontend framework called Svelte, which is currently not so popular, but it's simplicty is making it gain more popularity over time. I thought that this was the best opportunity to find out if that framework is any good. And I quite enjoyed using it. I like keeping business logic, data fetches from the backend, UI components and pages separate, so this is what I just did there.
+I have been searching for opportunity to use a new frontend framework called Svelte, which is currently not so popular, but it's simplicty is making it gain more popularity over time. I thought that this was the best opportunity to find out if that framework is any good. And I quite enjoyed using it. I like keeping business logic, data fetches from the backend and pages separate, so this is what I just did there.
 
-## Scaling possibilities
+## Improvements & scaling possibilities
+
+### The use of Tailwind CSS
+* I was not able to get Tailwind CSS and as I did not have that much time, I started writing my own CSS instead.
+
+### Error handling
+* Error handling could be better with detailed error coding system and translation files that translate them to different languages.
+
+### Flight filtering
+* Backend supports filtering flights by different parameters, but as I was short on time, it did not get fully implemented in frontend.
 
 ### Fetching data from one of real flight company APIs
 * Application could be made to fetch data from real world flight company API to get real world flight data making the UX more realistic.
@@ -110,5 +119,5 @@ I have been searching for opportunity to use a new frontend framework called Sve
 * [Google Gemini](https://gemini.google.com/)- it helped me hustling with date and time formats.
 
 ## Personal opinion
-Although this is my first project with Java and Spring Boot, it was easy to adapt form .NET to Spring Boot. The most annoying things were getters and setters, in C# we don't write them out as we do in Java. Svelte impressed me because it made it easy to set up the frontend for this webapp. Routing was far easier than with Svelte's main rivals- React, Vue.js and Angular. I think that the project turned out relatively well and this is one of those that can be added to GitHub with pride. This project just proves my point even more - **You don't have to learn all of the languages and frameworks. Being very good in one of the frameworks will get You much further than being moderate in all of them.**
+Although this is my first project with Java and Spring Boot, it was easy to adapt form .NET to Spring Boot. The most annoying things were getters and setters, in C# we don't write them out as we do in Java. Svelte impressed me because it made it easy to set up the frontend for this webapp. Routing was far easier than with Svelte's main rivals- React, Vue.js and Angular. I think that the project turned out relatively well and this is one of those that can be added to GitHub with pride. This project just proves my point even more - **You don't have to learn all of the languages and frameworks. Being very good in one of the frameworks will get You further than being moderate in all of them.**
 
