@@ -31,21 +31,10 @@ npm i; npm run dev
 
 ## Explanation of the structure
 
-### Frontend/UI
-The software has two UIs:
-*  **ConsoleApp**: Old-fashioned looking UI that supports one PC (you can still play 1v1).
-*  **WebApp(Razor pages)**:  Modern looking web interface that supports multiple users from other PCs.
-
 ### Backend structure
-The software has 8 different parts:  
-* **Authentication**: As the name says, this part is responsible for authentication in the WebApp UI.
-* **ConsoleApp**: This part controls the gameflow in the Console UI.
-* **ConsoleUI**: This part is responsible for drawing the board in Console UI.
-* **DAL**: Data Access Layer communicates with database or with file system (there is an interface and it can be easily changed between file system and db)
-* **Domain**: It contains all of the entities and enums.
-* **GameBrain**: This part controls the game flow in general regardless of the UI that is used.
-* **MenuSystem**: It controls all of the Console UI's menu elements.
-* **WebApp**: This is the second interface for the web users.
+
+* **FlightController** - Responsible for fetching all flights from DB, it is also capable of filtering the flights by origin, destination, date, departure and arrival time and by price. If there are no parameters it fetches all the flights.
+* **SeatController** - Responsible for fetching all seats from DB, it is capable of filtering the seats by  
 
 ### Data Transfer Objects (DTOs) and DB Entities
 DTOs are used for communicating with Power Automate (via HTTP) and SQLite database
