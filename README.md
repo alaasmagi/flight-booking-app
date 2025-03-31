@@ -4,8 +4,7 @@
 
 * UI language: Estonian
 * Development year: **2025**
-* Languages and technologies: **Backend: Spring Boot, Java, JPA, SQLite  
-                                Frontend: Svelte, TypeScript**
+* Languages and technologies: **Backend: Spring Boot, Java, JPA, SQLite & Frontend: Svelte, TypeScript**
 
 ## How to run
 
