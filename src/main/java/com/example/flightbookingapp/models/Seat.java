@@ -8,15 +8,12 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int rowNumber;
+    private ESeatClass seatClass;
     private char seatLetter;
     private boolean isBooked;
     private boolean isWindow;
     private boolean hasExtraLegroom;
     private boolean isNearExit;
-
-    @ManyToOne
-    @JoinColumn(name = "flight_id")
-    private Flight flight;
 
     public Seat() {
     }
@@ -77,12 +74,7 @@ public class Seat {
         isNearExit = nearExit;
     }
 
-    public Flight getFlight() {
-        return flight;
-    }
+    public ESeatClass getSeatClass() { return seatClass;}
 
-    public void setFlight(Flight flight) {
-        this.flight = flight;
-    }
-
+    public void setSeatClass(ESeatClass seatClass) { this.seatClass = seatClass;}
 }
