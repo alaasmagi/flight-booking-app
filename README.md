@@ -107,7 +107,7 @@ I have been searching for opportunity to use a new frontend framework called Sve
 
 ## Assistance used during this project
 * [YouTube video](https://www.youtube.com/watch?v=O_XL9oQ1_To&list=WL&index=3&t=620s)- to learn the main differences and approaches of building good Java and Spring Boot fullstack web application.
-* [Google Gemini](https://gemini.google.com/)- it helped me hustling with the LocalDate, LocalTime and LocalDateTime formats.
+* [Google Gemini](https://gemini.google.com/)- it helped me hustling with date and time formats.
 
 ## Personal opinion
 Although this is my first project with Java and Spring Boot, it was easy to adapt form .NET to Spring Boot. The most annoying things were getters and setters, in C# we don't write them out as we do in Java. Svelte impressed me because it made it easy to set up the frontend for this webapp. Routing was far easier than with Svelte's main rivals- React, Vue.js and Angular. I think that the project turned out relatively well and this is one of those that can be added to GitHub with pride. This project just proves my point even more - **You don't have to learn all of the languages and frameworks. Being very good in one of the frameworks will get You much further than being moderate in all of them.**
