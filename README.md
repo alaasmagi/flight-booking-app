@@ -15,15 +15,21 @@
 * Node.js 
 * Modern web browser
 
-### 
+### Running the app
 
-After meeting all prerequisites above
+After meeting all prerequisites above - 
 * backend can be run via terminal/cmd by command
 ```bash
 gradle run
 ```
-  
-* It does not need internet connection to run (as it starts on localhost), but for multiplayer mode, the internet connection is necessary.
+* frontend can be run via terminal/cmd by commands
+```bash
+npm i
+```
+and
+```bash
+npm run dev
+```
 
 
 
