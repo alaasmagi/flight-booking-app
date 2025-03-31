@@ -27,7 +27,7 @@ gradle run
 npm i; npm run dev 
 ```
 
-## Explanation of the structure
+## Structure
 
 ### Backend structure
 
@@ -79,7 +79,7 @@ public enum ESeatClass {
 ```
 
 
-### Data management
+### Design choices
 The application uses two different approaches:  
 * File system approach
 * Database approach
