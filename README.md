@@ -24,11 +24,7 @@ gradle run
 ```
 * frontend can be run via terminal/cmd by commands
 ```bash
-npm i
-```
-and
-```bash
-npm run dev
+npm i; npm run dev 
 ```
 
 
