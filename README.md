@@ -27,14 +27,12 @@ gradle run
 npm i; npm run dev 
 ```
 
-
-
 ## Explanation of the structure
 
 ### Backend structure
 
 * **FlightController** - Responsible for fetching all flights from DB, it is also capable of filtering the flights by origin, destination, date, departure and arrival time and by price. If there are no parameters it fetches all the flights.
-* **SeatController** - Responsible for fetching all seats from DB, it is capable of filtering the seats by  
+* **SeatController** - Responsible for fetching and booking available seats, it is capable of filtering the seats by class, window criteria, 
 
 ### Data Transfer Objects (DTOs) and DB Entities
 DTOs are used for communicating with Power Automate (via HTTP) and SQLite database
