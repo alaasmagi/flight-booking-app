@@ -32,122 +32,52 @@ npm i; npm run dev
 ### Backend structure
 
 * **FlightController** - Responsible for fetching all flights from DB, it is also capable of filtering the flights by origin, destination, date, departure and arrival time and by price. If there are no parameters it fetches all the flights.
-* **SeatController** - Responsible for fetching and booking available seats, it is capable of filtering the seats by class, window criteria, 
+* **SeatController** - Responsible for fetching and booking available seats, it is capable of filtering the seats by class, next to window, extra legroom, near exit.
+* **SeatService**- Responsible for finding adjacent seats (seats next to each other) by the amount of seats to be booked.
+* **DBIntializer** - Responsible for resetting the DB state to default state after every time the backend restarts.
 
-### Data Transfer Objects (DTOs) and DB Entities
-DTOs are used for communicating with Power Automate (via HTTP) and SQLite database
+### DB Entities
+There are two entities and two tables in the DB. Entities are not related to eachother in any way. Everytime the app launches, the backend resets its database entities, seats' availability is set randomly.
 
-* **GameConfig:**
+* **Flight:**
 
-```csharp
-public class GameConfig
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = default!;
-    public int GamePiecesPerPlayer { get; set; } = 4;
-    public int BoardWidth { get; set; } = 5;
-    public int BoardHeight { get; set; } = 5;
-    public int GridSizeAndWinCondition { get; set; } = 3;
-    public int GridStartPosX { get; set; } = 0;
-    public int GridStartPosY { get; set; } = 0;
-    public int RelocatePiecesAfterMoves { get; set; } = 4;
-
-    public string ToJsonString()
-    {
-        return System.Text.Json.JsonSerializer.Serialize(this);
-    }
-}   
+```java
+@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String origin;
+    private String destination;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
+    private double price;
 ```
   
-* **GameState:**
+* **Seat:**
 
-```csharp
-public class GameState
-{ 
-    public int Id { get; set; }
-    public EGamePiece [][] GameBoard { get; set; }
-    public EGamePiece NextMoveBy { get; set; } = EGamePiece.O;
-    public EGameGrid [][] GameGrid { get; set; }
-    public EGameStatus CurrentStatus { get; set; }
-    public GameConfig GameConfiguration { get; set; }
-    public int XPiecesCount { get; set; }
-    public int OPiecesCount { get; set; }
+```java
+@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int rowNumber;
+    private ESeatClass seatClass;
+    private char seatLetter;
+    private boolean isBooked;
+    private boolean isWindow;
+    private boolean hasExtraLegroom;
+    private boolean isNearExit;
+    private double extraFee;
+```
 
-    public GameState(EGamePiece[][] gameBoard, EGameGrid[][] gameGrid, GameConfig gameConfiguration, EGameStatus currentStatus, int xPiecesCount, int oPiecesCount)
-    {
-        GameBoard = gameBoard;
-        GameGrid = gameGrid;
-        GameConfiguration = gameConfiguration;
-        CurrentStatus = currentStatus;
-        XPiecesCount = xPiecesCount;
-        OPiecesCount = oPiecesCount;
-    }
+* **ESeatClass:**
 
-    public string ToJsonString()
-    {
-        return System.Text.Json.JsonSerializer.Serialize(this);
-    }
+```java
+public enum ESeatClass {
+    ECONOMY,
+    BUSINESS,
+    FIRSTCLASS
 }
 ```
 
-* **Database entities:**
-
-```csharp
-public class ConfigurationEntity
-{
-    public int Id { get; set; }
-    public string GameConfigName { get; set; } = "";
-    public string SerializedJsonString { get; set; } = "";
-}
-
-public class SaveGameEntity
-{
-    public int Id { get; set; }
-    public string SaveGameName { get; set; } = "";
-    public string PlayerAName { get; set; } = "";
-    public string PlayerBName { get; set; } = "";
-    public EGameMode GameMode { get; set; }
-    public string SerializedJsonString { get; set; } = "";
-}
-```
-
-* **Enums:**
-
-```csharp
-public enum EGameStatus
-{
-    XWins,
-    OWins,
-    Tie,
-    UnFinished
-}
-```
-
-```csharp
-public enum EGamePiece
-{
-    Empty,
-    X,
-    O,
-}
-```
-
-```csharp
-public enum EGameMode
-{
-    PlayerVsAi,
-    PlayerVsPlayer,
-    AiVsAi
-}
-```
-
-```csharp
-public enum EGameGrid
-{
-    Empty,
-    Grid
-}
-```
 
 ### Data management
 The application uses two different approaches:  
