@@ -14,6 +14,7 @@ public class Seat {
     private boolean isWindow;
     private boolean hasExtraLegroom;
     private boolean isNearExit;
+    private double extraFee;
 
     public Seat() {
     }
@@ -77,4 +78,8 @@ public class Seat {
     public ESeatClass getSeatClass() { return seatClass;}
 
     public void setSeatClass(ESeatClass seatClass) { this.seatClass = seatClass;}
+
+    public double getExtraFee() {return extraFee; }
+
+    public void setExtraFee(double extraFee) { this.extraFee = extraFee; }
 }

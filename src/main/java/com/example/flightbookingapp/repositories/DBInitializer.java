@@ -11,7 +11,7 @@ public class DBInitializer {
 
     public static void initializeDatabase() {
         String flightSQL = "INSERT INTO flight (arrival_time, departure_time, destination, origin, price) VALUES (?, ?, ?, ?, ?)";
-        String seatSQL = "INSERT INTO seat (has_extra_legroom, is_booked, is_near_exit, is_window, row_number, seat_class, seat_letter) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String seatSQL = "INSERT INTO seat (has_extra_legroom, is_booked, is_near_exit, is_window, row_number, seat_class, seat_letter, extra_fee) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement flightStmt = conn.prepareStatement(flightSQL, Statement.RETURN_GENERATED_KEYS);
@@ -47,6 +47,7 @@ public class DBInitializer {
                     seatStmt.setInt(5, row);
                     seatStmt.setInt(6, row <= 2 ? 2 : (row <= 5 ? 1 : 0));
                     seatStmt.setString(7, String.valueOf(seatLetter));
+                    seatStmt.setDouble(8, row <= 2 ? 100.00 : (row <= 5 ? 50.00 : 0.00));
                     seatStmt.executeUpdate();
                 }
             }
