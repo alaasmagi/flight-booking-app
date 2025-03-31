@@ -21,6 +21,8 @@ VITE_API_URL=http://localhost:8080
 ```
 8080 is the default port on which the backend runs.
 
+Backend CORS is configured to allow origin from localhost:5173, which is default port for vite.
+
 ### Running the app
 
 After meeting all prerequisites above - 
