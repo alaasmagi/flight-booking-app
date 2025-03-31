@@ -42,11 +42,13 @@ There are two entities and two tables in the DB. Entities are not related to eac
 * **Flight:**
 
 ```java
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String origin;
-    private String destination;
+    private String originCode; // Airport code
+    private String originName; // City name
+    private String destinationCode; //Airport code
+    private String destinationName; // City name
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private double price;
