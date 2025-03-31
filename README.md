@@ -79,12 +79,16 @@ public enum ESeatClass {
 ```
 
 
-### Design choices
-The application uses two different approaches:  
-* File system approach
-* Database approach
+## Design choices
 
-In both approaches, configuration and gamestate data is stored as serialized JSON string. Data management has an interface and both file system and database approach implement it. So the method can be changed with by changing just the few lines of code.
+### Database  
+I went for a simple approach by keeping data offline using SQLite. I tried to make database as minimal as possible by keeping things uncomplicated and the number of entities minimal. For seat class I like to use enums, because the values are set strongly and there is less chance of a mistake to occur. Each flight has a fligh-specific fee and seat has an extra fee. Extra fee depends on the class of the seat. And the total price of the journey is the sum of flight fee and seat(s') fee(s).
+
+### Backend
+Even though it's my first time writing Java and Spring Boot web app, I took the challenge and found that there is some similarities between Spring Boot and my current tech stack involving mostly the world of .NET. Java has JPAs, which were useful, so I used them and it made communication with DB a lot easier (almost as easy as with .NET Entity Framework). The overall design approach (controllers, DB entities, services) is the same I use always with my web applications. It keeps things untangled and relatively easy.
+
+### Frontend
+I have been searching for opportunity to use a new frontend framework called Svelte, which is currently not so popular, but it's simplicty is making it gain more popularity over time. 
 
 ## Scaling possibilities
 
