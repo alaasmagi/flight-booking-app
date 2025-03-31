@@ -11,19 +11,31 @@ import java.util.List;
 public class SeatService implements ISeatService {
 
     public List<Seat> findAdjacentSeats(List<Seat> availableSeats, int numberOfSeats) {
-        List<Seat> adjacentSeats = new ArrayList<>();
-        for (Seat seat : availableSeats) {
-            adjacentSeats.add(seat);
-            if (adjacentSeats.size() == numberOfSeats) {
-                if (areAdjacentSeats(adjacentSeats)) {
-                    return adjacentSeats;
+        availableSeats.sort((a, b) -> {
+            if (a.getRowNumber() == b.getRowNumber()) {
+                return Character.compare(a.getSeatLetter(), b.getSeatLetter());
+            }
+            return Integer.compare(a.getRowNumber(), b.getRowNumber());
+        });
+
+        for (int i = 0; i <= availableSeats.size() - numberOfSeats; i++) {
+            List<Seat> adjacentSeats = new ArrayList<>();
+            adjacentSeats.add(availableSeats.get(i));
+
+            for (int j = 1; j < numberOfSeats; j++) {
+                if (availableSeats.get(i + j).getRowNumber() == adjacentSeats.get(0).getRowNumber() &&
+                        availableSeats.get(i + j).getSeatLetter() - adjacentSeats.get(j - 1).getSeatLetter() == 1) {
+                    adjacentSeats.add(availableSeats.get(i + j));
                 } else {
-                    adjacentSeats.remove(0);
+                    break;
                 }
-            } else if (adjacentSeats.size() > numberOfSeats) {
-                adjacentSeats.remove(0);
+            }
+
+            if (adjacentSeats.size() == numberOfSeats) {
+                return adjacentSeats;
             }
         }
+
         return new ArrayList<>();
     }
 
@@ -33,13 +45,13 @@ public class SeatService implements ISeatService {
         }
 
         int rowNumber = seats.get(0).getRowNumber();
-        char expectedSeatLetter = seats.get(0).getSeatLetter();
+        seats.sort((a, b) -> Character.compare(a.getSeatLetter(), b.getSeatLetter())); // Ensure order
 
-        for (Seat seat : seats) {
-            if (seat.getRowNumber() != rowNumber || seat.getSeatLetter() != expectedSeatLetter) {
+        for (int i = 1; i < seats.size(); i++) {
+            if (seats.get(i).getRowNumber() != rowNumber ||
+                    seats.get(i).getSeatLetter() - seats.get(i - 1).getSeatLetter() != 1) {
                 return false;
             }
-            expectedSeatLetter++;
         }
         return true;
     }

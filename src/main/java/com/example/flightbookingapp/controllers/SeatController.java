@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/seats")
+@CrossOrigin(origins = "http://localhost:5173")
 public class SeatController {
     @Autowired
     private SeatRepository seatRepository;

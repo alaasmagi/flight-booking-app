@@ -4,10 +4,7 @@ import com.example.flightbookingapp.models.Flight;
 import com.example.flightbookingapp.models.Seat;
 import com.example.flightbookingapp.repositories.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/flights")
+@CrossOrigin(origins = "http://localhost:5173")
 public class FlightController {
     @Autowired
     private FlightRepository flightRepository;
