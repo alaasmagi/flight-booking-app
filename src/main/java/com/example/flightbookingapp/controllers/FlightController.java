@@ -1,6 +1,7 @@
 package com.example.flightbookingapp.controllers;
 
 import com.example.flightbookingapp.models.Flight;
+import com.example.flightbookingapp.models.Seat;
 import com.example.flightbookingapp.repositories.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,44 +31,15 @@ public class FlightController {
             @RequestParam(required = false) Double price
     ) {
         List<Flight> flights = flightRepository.findAll();
-
-        if(origin != null) {
-            flights = flights.stream()
-                    .filter(flight -> flight.getOrigin().equals(origin))
-                    .collect(Collectors.toList());
-        }
-
-        if (destination != null) {
-            flights = flights.stream()
-                    .filter(f -> f.getDestination().equalsIgnoreCase(destination))
-                    .collect(Collectors.toList());
-        }
-
-        if (date != null) {
-            flights = flights.stream()
-                    .filter(f -> f.getDepartureTime().toLocalDate().equals(date))
-                    .collect(Collectors.toList());
-        }
-
-        if (arrivalTime != null) {
-            flights = flights.stream()
-                    .filter(f -> f.getDepartureTime().equals(arrivalTime))
-                    .collect(Collectors.toList());
-        }
-
-        if (departureTime != null) {
-            flights = flights.stream()
-                    .filter(f -> f.getDepartureTime().equals(departureTime))
-                    .collect(Collectors.toList());
-        }
-
-        if (price != null) {
-            flights = flights.stream()
-                    .filter(f -> f.getPrice() <= price)
-                    .collect(Collectors.toList());
-        }
-
-        return flights;
+        List<Flight> availableFlights = flights.stream()
+                .filter(flight -> origin == null || flight.getOrigin().equals(origin))
+                .filter(flight -> destination == null || flight.getDestination().equals(destination))
+                .filter(flight -> date == null || flight.getDepartureTime().toLocalDate().equals(date))
+                .filter(flight -> arrivalTime == null || flight.getArrivalTime().equals(arrivalTime))
+                .filter(flight -> departureTime == null || flight.getDepartureTime().equals(departureTime))
+                .filter(flight -> price == null || flight.getPrice() == price)
+                .collect(Collectors.toList());
+        return availableFlights;
     }
 }
 
