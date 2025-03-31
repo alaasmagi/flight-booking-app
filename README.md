@@ -15,6 +15,12 @@
 * Node.js 
 * Modern web browser
 
+Frontend should have .env file in the root folder (flight-booking-ui) which has following content:
+```bash
+VITE_API_URL=http://localhost:8080
+```
+8080 is the default port on which the backend runs.
+
 ### Running the app
 
 After meeting all prerequisites above - 
@@ -90,7 +96,7 @@ I went for a simple approach by keeping data offline using SQLite. I tried to ma
 Even though it's my first time writing Java and Spring Boot web app, I took the challenge and found that there is some similarities between Spring Boot and my current tech stack involving mostly the world of .NET. Java has JPAs, which were useful, so I used them and it made communication with DB a lot easier (almost as easy as with .NET Entity Framework). The overall design approach (controllers, DB entities, services) is the same I use always for my web applications. It keeps things untangled and relatively easy.
 
 ### Frontend
-I have been searching for opportunity to use a new frontend framework called Svelte, which is currently not so popular, but it's simplicty is making it gain more popularity over time. I thought that this was the best opportunity to find out if that framework is any good. And I quite enjoyed using it. I like keeping business logic, data fetches from the backend, UI components and pages separate, so this is what I just did there. 
+I have been searching for opportunity to use a new frontend framework called Svelte, which is currently not so popular, but it's simplicty is making it gain more popularity over time. I thought that this was the best opportunity to find out if that framework is any good. And I quite enjoyed using it. I like keeping business logic, data fetches from the backend, UI components and pages separate, so this is what I just did there.
 
 ## Scaling possibilities
 
