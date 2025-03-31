@@ -23,8 +23,8 @@ public class FlightController {
 
     @GetMapping
     public List<Flight> getFlights(
-            @RequestParam(required = false) String origin,
-            @RequestParam(required = false) String destination,
+            @RequestParam(required = false) String originCity,
+            @RequestParam(required = false) String destinationCity,
             @RequestParam(required = false) LocalDate date,
             @RequestParam(required = false) LocalDateTime arrivalTime,
             @RequestParam(required = false) LocalDateTime departureTime,
@@ -32,8 +32,8 @@ public class FlightController {
     ) {
         List<Flight> flights = flightRepository.findAll();
         List<Flight> availableFlights = flights.stream()
-                .filter(flight -> origin == null || flight.getOrigin().equals(origin))
-                .filter(flight -> destination == null || flight.getDestination().equals(destination))
+                .filter(flight -> originCity == null || flight.getOriginCity().equals(originCity))
+                .filter(flight -> destinationCity == null || flight.getDestinationCity().equals(destinationCity))
                 .filter(flight -> date == null || flight.getDepartureTime().toLocalDate().equals(date))
                 .filter(flight -> arrivalTime == null || flight.getArrivalTime().equals(arrivalTime))
                 .filter(flight -> departureTime == null || flight.getDepartureTime().equals(departureTime))

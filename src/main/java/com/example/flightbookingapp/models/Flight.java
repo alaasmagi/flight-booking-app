@@ -12,8 +12,10 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String origin;
-    private String destination;
+    private String originAirport;
+    private String originCity;
+    private String destinationAirport;
+    private String destinationCity;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private double price;
@@ -21,21 +23,21 @@ public class Flight {
     public Flight() {
     }
 
-    public String getOrigin() {
-        return origin;
-    }
+    public String getOriginAirport() { return originAirport; }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
+    public void setOriginAirport(String originAirport) { this.originAirport = originAirport; }
 
-    public String getDestination() {
-        return destination;
-    }
+    public String getOriginCity() { return originCity; }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
+    public void setOriginCity(String originCity) { this.originCity = originCity; }
+
+    public String getDestinationAirport() { return destinationAirport; }
+
+    public void setDestinationAirport(String destinationAirport) { this.destinationAirport = destinationAirport; }
+
+    public String getDestinationCity() { return destinationCity; }
+
+    public void setDestinationCity(String destinationCity) { this.destinationCity = destinationCity; }
 
     public int getId() {
         return id;
