@@ -45,10 +45,10 @@ There are two entities and two tables in the DB. Entities are not related to eac
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String originCode; // Airport code
-    private String originName; // City name
-    private String destinationCode; //Airport code
-    private String destinationName; // City name
+    private String originAirport;
+    private String originCity;
+    private String destinationAirport;
+    private String destinationCity;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private double price;
@@ -57,7 +57,7 @@ There are two entities and two tables in the DB. Entities are not related to eac
 * **Seat:**
 
 ```java
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int rowNumber;
